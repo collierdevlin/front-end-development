@@ -1,7 +1,6 @@
 import React from 'react'
 import { Provider as StyletronProvider } from 'styletron-react'
 import { LightTheme, BaseProvider } from 'baseui'
-import AppBar from '../components/AppBar'
 import '../styles/base.css'
 
 const BaseLayout = ({ children }) => {
@@ -24,7 +23,6 @@ const BaseLayout = ({ children }) => {
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <main>
-          {/* <AppBar /> */}
             { children }
         </main>
       </BaseProvider>
