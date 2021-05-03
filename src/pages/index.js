@@ -1,16 +1,14 @@
 import * as React from 'react'
 import scrollToElement from 'scroll-to-element'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
-import { H1, Paragraph1, Paragraph2, Paragraph3 } from 'baseui/typography'
+import { Paragraph2, Paragraph3 } from 'baseui/typography'
 import { useStyletron, styled } from 'baseui'
 import BaseLayout from '../layout/base'
 import { graphql, useStaticQuery } from 'gatsby'
 import Section from '../components/Section'
 import 'aos/dist/aos.css'
-import ScrollButton from '../components/ScrollButton'
 import baseWebLogo from '../assets/baseweblogo.svg'
 import githubLogo from '../assets/github-logo.png'
-import googleAnalyticsLogo from '../assets/google-analytics-logo.png'
 import graphCmsLogo from '../assets/graphcms-logo.svg'
 import netlifyLogo from '../assets/netlify-logo.png'
 import gatsbyLogo from '../assets/gatsby-logo.png'
@@ -116,11 +114,6 @@ const Plugins = () => {
         <FlexGridItem {...itemProps}>
           <a className={css(linkStyle)} href="https://www.netlify.com/" target="_blank">
             <img className={css(imageStyle)} src={netlifyLogo} alt="netlify-logo" />
-          </a>
-        </FlexGridItem>
-        <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://analytics.google.com/analytics/web/" target="_blank">
-            <img className={css(imageStyle)} src={googleAnalyticsLogo} alt="google-analytics-logo" />
           </a>
         </FlexGridItem>
       </FlexGrid>
