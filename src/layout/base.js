@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider as StyletronProvider } from 'styletron-react'
-import { LightTheme, BaseProvider } from 'baseui'
+import { BaseProvider } from 'baseui'
+import CustomTheme from '../styles/theme'
 import '../styles/base.css'
 
 const BaseLayout = ({ children }) => {
@@ -21,7 +22,7 @@ const BaseLayout = ({ children }) => {
 
   return (
     <StyletronProvider value={engine}>
-      <BaseProvider theme={LightTheme}>
+      <BaseProvider theme={CustomTheme}>
         <main>
             { children }
         </main>

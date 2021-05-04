@@ -9,7 +9,13 @@ import ScrollButton from './ScrollButton'
 
 const md = MarkdownIt()
 
-const Section = ({ title, content, style, index, scrollToNext }) => {
+const Section = ({
+  title,
+  content,
+  style,
+  index,
+  scrollToNext
+}) => {
   const [css, theme] = useStyletron()
 
   useEffect(() => {
@@ -19,7 +25,7 @@ const Section = ({ title, content, style, index, scrollToNext }) => {
   }, [])
 
   return (
-    <div className={`section-${index}`}>
+    <div className={`section section-${index}`}>
       <div
         className={
           css({
@@ -36,7 +42,8 @@ const Section = ({ title, content, style, index, scrollToNext }) => {
           <H4 color={ style?.color || '#333' }>{title}</H4>
           <div className={
             css({
-              ...theme.typography.DisplaySmall
+              ...theme.typography.DisplaySmall,
+              lineHeight: '1.6em',
             })
           } dangerouslySetInnerHTML={ { __html: md.render(content) } } />
         </Container>

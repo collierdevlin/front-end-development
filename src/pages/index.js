@@ -13,6 +13,7 @@ import graphCmsLogo from '../assets/graphcms-logo.svg'
 import netlifyLogo from '../assets/netlify-logo.png'
 import gatsbyLogo from '../assets/gatsby-logo.png'
 import reactLogo from '../assets/react-logo.png'
+import qrCode from '../assets/qr-code.png'
 
 const scrollTo = (elClass) => {
   scrollToElement(elClass, {
@@ -55,6 +56,22 @@ const Footer = () => {
         Created by Collier Devlin &copy; {(new Date()).getFullYear()}
       </Paragraph2>
     </div>
+  )
+}
+
+const QRCode = () => {
+  const [css] = useStyletron()
+
+  return (
+    <Container className={css({ textAlign: 'center', padding: '2em 0' })}>
+      <img className={
+        css({
+          width: '100%',
+          height: 'auto',
+          maxWidth: '500px'
+        })
+      } src={qrCode} alt="qr-code" />
+    </Container>
   )
 }
 
@@ -147,6 +164,7 @@ const IndexPage = () => {
           key={section.id}
         />
       ))}
+      <QRCode />
       <Plugins />
       <Footer />
     </BaseLayout>
