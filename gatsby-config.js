@@ -18,13 +18,19 @@ module.exports = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
-    // "gatsby-plugin-sitemap",
-    // {
-    //   resolve: "gatsby-plugin-manifest",
-    //   options: {
-    //     icon: "src/images/icon.png",
-    //   },
-    // },
+    "gatsby-plugin-sitemap",
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Front-end Development`,
+        short_name: `FE Development`,
+        start_url: `/`,
+        icon: `src/assets/icon.png`,
+        background_color: `#b1e0ca`,
+        theme_color: `#00adee`,
+        display: `standalone`,
+      }
+    },
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
