@@ -29,7 +29,7 @@ const Section = ({
       <div
         className={
           css({
-            background: '#f2f2f2',
+            background: '#f9f1d2',
             color: '#333',
             lineSpacing: '1.5em',
             minHeight: '100vh',
@@ -38,12 +38,11 @@ const Section = ({
           })
         }
       >
-        <Container data-aos={ index % 2 == 0 ? "fade-right" : "fade-left" }>
+        <Container data-aos={ index % 2 === 0 ? "fade-right" : "fade-left" }>
           <H4 color={ style?.color || '#333' }>{title}</H4>
           <div className={
             css({
-              ...theme.typography.DisplaySmall,
-              lineHeight: '1.6em',
+              ...theme.typography.DisplayXSmall
             })
           } dangerouslySetInnerHTML={ { __html: md.render(content) } } />
         </Container>

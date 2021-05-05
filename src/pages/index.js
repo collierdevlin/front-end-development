@@ -1,7 +1,7 @@
 import * as React from 'react'
 import scrollToElement from 'scroll-to-element'
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
-import { Paragraph2, Paragraph3 } from 'baseui/typography'
+import { DisplayMedium, Paragraph2, Paragraph3 } from 'baseui/typography'
 import { useStyletron, styled } from 'baseui'
 import BaseLayout from '../layout/base'
 import { graphql, useStaticQuery } from 'gatsby'
@@ -63,14 +63,17 @@ const QRCode = () => {
   const [css] = useStyletron()
 
   return (
-    <Container className={css({ textAlign: 'center', padding: '2em 0' })}>
+    <Container className={css({ textAlign: 'center', padding: '2em' })}>
       <img className={
         css({
           width: '100%',
           height: 'auto',
-          maxWidth: '500px'
+          maxWidth: '400px'
         })
       } src={qrCode} alt="qr-code" />
+      <DisplayMedium className={css({ fontWeight: 700 })}>
+        https://qrco.de/bc6njj
+      </DisplayMedium>
     </Container>
   )
 }
@@ -109,27 +112,27 @@ const Plugins = () => {
         flexGridRowGap="scale1000"
       >
         <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://reactjs.org/" target="_blank">
+          <a className={css(linkStyle)} href="https://reactjs.org/" target="_blank" rel="noreferrer">
             <img className={css(imageStyle)} src={reactLogo} alt="react-logo" />
           </a>
         </FlexGridItem>
         <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://www.gatsbyjs.com/" target="_blank">
+          <a className={css(linkStyle)} href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">
             <img className={css(imageStyle)} src={gatsbyLogo} alt="gatsby-logo" />
           </a>
         </FlexGridItem>
         <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://github.com/" target="_blank">
+          <a className={css(linkStyle)} href="https://github.com/collierdevlin/front-end-development" target="_blank" rel="noreferrer">
             <img className={css(imageStyle)} src={githubLogo} alt="github-logo" />
           </a>
         </FlexGridItem>
         <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://graphcms.com/" target="_blank">
+          <a className={css(linkStyle)} href="https://graphcms.com/" target="_blank" rel="noreferrer">
             <img className={css(imageStyle)} src={graphCmsLogo} alt="graphcms-logo" />
           </a>
         </FlexGridItem>
         <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://www.netlify.com/" target="_blank">
+          <a className={css(linkStyle)} href="https://www.netlify.com/" target="_blank" rel="noreferrer">
             <img className={css(imageStyle)} src={netlifyLogo} alt="netlify-logo" />
           </a>
         </FlexGridItem>
