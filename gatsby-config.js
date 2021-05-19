@@ -25,7 +25,7 @@ module.exports = {
         short_name: `FE Development`,
         start_url: `/`,
         icon: `src/assets/icon.png`,
-        background_color: `#b1e0ca`,
+        background_color: `#f9f1d2`,
         theme_color: `#00adee`,
         display: `standalone`,
       }
