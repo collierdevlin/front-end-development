@@ -1,54 +1,57 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Front-end Development Presentation / PWA / Reference Guide
 
-## 🚀 Quick start
+This repository contains a simple, one-page Gatsby site that fetches content from GraphCMS to fill the different "slides". It is also configured to act as a PWA (Progressive Web App) to demonstrate what a PWA is for mobile users.
 
-1.  **Create a Gatsby site.**
+Also, Netlify is setup to demonstrate a very simple CI/CD pipeline and to show a standard development work flow of making chances, previewing in development environment, then committing changes to a branch to watch them be automatically deployed.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Development
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+  
 
-2.  **Start developing.**
+1. Install dependencies
 
-    Navigate into your new site’s directory and start it up.
+```shell
+	yarn install
+```
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+  
 
-3.  **Open the code and start customizing!**
+2. Run development server
 
-    Your site is now running at http://localhost:8000!
+```shell
+	yarn develop
+```
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+  
 
-4.  **Learn more**
+3. The site should be running on `http://localhost:8000`
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+  
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+4. Learn more
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+  
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+-  [Documentation](https://www.gatsbyjs.com/docs)
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+  
+## Build Your Bundle
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+1. Build your Gatsby site
+```shell
+	yarn build
+```  
+2. Your static files should be in the `public/` directory
 
-## 🚀 Quick start (Gatsby Cloud)
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+## Deployment
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+Currently, this site auto-deploys to production when code gets pushed to the `master` branch using Netlify on a free tier. I cannot add anyone extra to this account, but if you have any questions please reach out to Collier Devlin.
+
+> Generally, if the code builds successfully in your local, development environment, chances are high that there won't be any issues in the Netlify pipeline.
+
+### Manual Deployment
+
+1. Build your Gatsby site (see "Build Your Bundle)
+2. Copy all the contents on the `public/` directory to a server of your choosing
+
