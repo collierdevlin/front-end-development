@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import AOS from 'aos'
+import VisibilitySensor from 'react-visibility-sensor'
 import Container from './Container'
 import { H4 } from 'baseui/typography'
 import { useStyletron } from 'baseui'
 import MarkdownIt from 'markdown-it'
-import ScrollButton from './ScrollButton'
 
 const md = MarkdownIt()
 
@@ -14,7 +14,7 @@ const Section = ({
   content,
   style,
   index,
-  scrollToNext
+  onManualView
 }) => {
   const [css, theme] = useStyletron()
 
@@ -38,17 +38,18 @@ const Section = ({
           })
         }
       >
-        <Container data-aos={ index % 2 === 0 ? "fade-right" : "fade-left" }>
-          <H4 color={ style?.color || '#333' }>{title}</H4>
-          <div className={
-            css({
-              ...theme.typography.DisplayXSmall
-            })
-          } dangerouslySetInnerHTML={ { __html: md.render(content) } } />
-        </Container>
-        <Container className={css({ textAlign: 'center' })}>
-          <ScrollButton scroll={scrollToNext} />
-        </Container>
+        <VisibilitySensor partialVisibility onChange={(isVisible) => {
+          if (isVisible) onManualView()
+        }}>
+          <Container data-aos={ index % 2 === 0 ? "fade-right" : "fade-left" }>
+            <H4 color={ style?.color || '#333' }>{title}</H4>
+            <div className={
+              css({
+                ...theme.typography.DisplayXSmall
+              })
+            } dangerouslySetInnerHTML={ { __html: md.render(content) } } />
+          </Container>
+        </VisibilitySensor>
       </div>
     </div>
   )

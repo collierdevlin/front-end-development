@@ -41,6 +41,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-visibility-sensor": "^5.1.1",
     "scroll-to-element": "^2.0.3",
     "styletron-engine-atomic": "^1.4.7",
     "styletron-react": "^6.0.1"
