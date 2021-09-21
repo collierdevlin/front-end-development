@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { DisplayMedium } from 'baseui/typography'
+import { DisplaySmall } from 'baseui/typography'
 import { useStyletron } from 'baseui'
 import Container from '../components/Container'
 
@@ -17,9 +17,9 @@ export const QRCode = () => {
           maxWidth: '400px'
         })
       } src={qrCode} alt="qr-code" />
-      <DisplayMedium className={css({ fontWeight: 700, padding: '1em 0' })}>
-        https://qrco.de/bc6njj
-      </DisplayMedium>
+      <DisplaySmall className={css({ fontWeight: 700, padding: '1em 0' })}>
+        https://sad-wright-127abd.netlify.app/
+      </DisplaySmall>
     </Container>
   )
 }
