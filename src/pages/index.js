@@ -1,147 +1,25 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import scrollToElement from 'scroll-to-element'
-import { FlexGrid, FlexGridItem } from 'baseui/flex-grid'
-import { DisplayMedium, Paragraph2, Paragraph3 } from 'baseui/typography'
-import { useStyletron, styled } from 'baseui'
 import BaseLayout from '../layout/base'
 import { graphql, useStaticQuery } from 'gatsby'
+import ControlButtons from '../components/ControlButtons'
+import Footer from '../components/Footer'
+import Plugins from '../components/Plugins'
+import QRCode from '../components/QRCode'
 import Section from '../components/Section'
 import 'aos/dist/aos.css'
-import baseWebLogo from '../assets/baseweblogo.svg'
-import githubLogo from '../assets/github-logo.png'
-import graphCmsLogo from '../assets/graphcms-logo.svg'
-import netlifyLogo from '../assets/netlify-logo.png'
-import gatsbyLogo from '../assets/gatsby-logo.png'
-import reactLogo from '../assets/react-logo.png'
-import qrCode from '../assets/qr-code.png'
+import { useStyletron } from 'baseui'
+import { H5, Paragraph3 } from 'baseui/typography'
 
 const scrollTo = (elClass) => {
   scrollToElement(elClass, {
     offset: 0,
-    duration: 500
+    duration: 300
   })
 }
 
-const Container = styled('div', {
-  maxWidth: '1280px',
-  margin: '0 auto',
-  padding: '1rem',
-})
-
-const Footer = () => {
-  const [css] = useStyletron()
-  return (
-    <div id="footer" className={
-      css({
-        textAlign: 'center',
-        margin: '25px auto 10px auto'
-      })
-    }>
-      <Paragraph3 className={css({ marginTop: '5rem', opacity: '0.6' })}>
-        Made with
-      </Paragraph3>
-      <a href="https://baseweb.design/" target="__blank">
-        <img className={
-            css({
-              width: '100%',
-              height: 'auto',
-              maxWidth: '85px',
-              opacity: '0.6',
-              ':hover': { opacity: '0.9', cursor: 'pointer' }
-            })
-          } src={baseWebLogo} alt="base-web-logo" />
-      </a>
-      
-      <Paragraph2 className={css({ margin: '45px 0 25px 0' })} color="#86A0A8">
-        Created by Collier Devlin &copy; {(new Date()).getFullYear()}
-      </Paragraph2>
-    </div>
-  )
-}
-
-const QRCode = () => {
-  const [css] = useStyletron()
-
-  return (
-    <Container className={css({ textAlign: 'center', padding: '2em' })}>
-      <img className={
-        css({
-          width: '100%',
-          height: 'auto',
-          maxWidth: '400px'
-        })
-      } src={qrCode} alt="qr-code" />
-      <DisplayMedium className={css({ fontWeight: 700 })}>
-        https://qrco.de/bc6njj
-      </DisplayMedium>
-    </Container>
-  )
-}
-
-const Plugins = () => {
-  const itemProps = {
-    height: 'auto',
-    display: 'flex',
-    flex: 'wrap',
-    flexBasis: '100px',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center'
-  }
-
-  const linkStyle = {
-    textAlign: 'center',
-    width: '100%'
-  }
-
-  const imageStyle = {
-    width: '90%',
-    maxWidth: '250px'
-  }
-
-  const [css] = useStyletron()
-
-  return (
-    <Container className={css({
-      padding: '4em 0'
-    })}
-    >
-      <FlexGrid
-        flexGridColumnCount={3}
-        flexGridColumnGap="scale1000"
-        flexGridRowGap="scale1000"
-      >
-        <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://reactjs.org/" target="_blank" rel="noreferrer">
-            <img className={css(imageStyle)} src={reactLogo} alt="react-logo" />
-          </a>
-        </FlexGridItem>
-        <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">
-            <img className={css(imageStyle)} src={gatsbyLogo} alt="gatsby-logo" />
-          </a>
-        </FlexGridItem>
-        <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://github.com/collierdevlin/front-end-development" target="_blank" rel="noreferrer">
-            <img className={css(imageStyle)} src={githubLogo} alt="github-logo" />
-          </a>
-        </FlexGridItem>
-        <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://graphcms.com/" target="_blank" rel="noreferrer">
-            <img className={css(imageStyle)} src={graphCmsLogo} alt="graphcms-logo" />
-          </a>
-        </FlexGridItem>
-        <FlexGridItem {...itemProps}>
-          <a className={css(linkStyle)} href="https://www.netlify.com/" target="_blank" rel="noreferrer">
-            <img className={css(imageStyle)} src={netlifyLogo} alt="netlify-logo" />
-          </a>
-        </FlexGridItem>
-      </FlexGrid>
-    </Container>
-  )
-}
-
 const IndexPage = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
   const query = useStaticQuery(graphql`
     query {
       graphCmsData {
@@ -155,16 +33,62 @@ const IndexPage = () => {
     }
   `)
 
+  const scrollNext = () => {
+    if (sections.length - 1 === currentIndex) {
+      scrollTo('#qrCode')
+      setCurrentIndex(currentIndex + 1)
+    } else if (sections.length - 1 > currentIndex) {
+      scrollTo(`.section-${currentIndex + 1}`)
+      setCurrentIndex(currentIndex + 1)
+    }
+  }
+
+  const scrollPrevious = () => {
+    scrollTo(sections.length < currentIndex ? `.section-${sections.length - 1}` : `.section-${currentIndex - 1}`)
+    setCurrentIndex(currentIndex - 1)
+  }
+
   const sections = query.graphCmsData.sections
+  const [css] = useStyletron()
   
   return (
-    <BaseLayout>
+    <BaseLayout
+      style={{ marginBottom: 65 }}
+      renderControls={() => (
+        <>
+          <div className={
+            css({
+              padding: '0.4em 0',
+              position: 'fixed',
+              placeItems: 'center',
+              display: 'flex',
+              width: '100%',
+              background: '#1d2542',
+              height: '65px',
+              bottom: 0,
+            })
+          }>
+            <div className={ css({ justifySelf: 'start', marginLeft: '0.4em' }) }>
+              <Paragraph3 color="white" style={{ fontStyle: 'italic' }}>{sections[currentIndex]?.title}</Paragraph3>
+            </div>
+            <div className={ css({ position: 'absolute', right: 0, justifySelf: 'end', display: 'flex', placeItems: 'center' }) }>
+              { currentIndex + 1 <= sections.length && <H5 margin="0 1em" color="white">{`${currentIndex + 1} / ${sections.length}`}</H5> }
+              <ControlButtons
+                disableNext={currentIndex + 1 > sections.length}
+                disablePrevious={currentIndex === 0}
+                scrollNext={scrollNext}
+                scrollPrevious={scrollPrevious}
+              />
+            </div>
+          </div>
+        </>
+      )}>
       { sections.map((section, index) => (
         <Section className={`section-${index}`}
-          scrollToNext={() => scrollTo(sections.length - 1 === index ? '#footer' : `.section-${index + 1}`)}
           {...section}
           index={index}
           key={section.id}
+          onManualView={() => setCurrentIndex(index)}
         />
       ))}
       <QRCode />
