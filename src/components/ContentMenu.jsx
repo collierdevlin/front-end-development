@@ -3,6 +3,7 @@ import { Button, KIND, SHAPE } from 'baseui/button'
 import { Drawer } from 'baseui/drawer'
 import Menu from 'baseui/icon/menu'
 import { useStyletron } from 'baseui'
+import autoprefixer from 'autoprefixer'
 
 const ContentMenu = ({ sections, currentIndex, scrollToSection }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,10 +22,25 @@ const ContentMenu = ({ sections, currentIndex, scrollToSection }) => {
       </Button>
       <Drawer
         overrides={{
+          Close: {
+            style: {
+              fill: 'white'
+            }
+          },
           DrawerContainer: {
             style: {
               backgroundColor: theme.colors.accent300,
-              color: 'white'
+              scrollbarWidth: 'none',
+              padding: 0,
+              overflow: 'auto',
+              width: 'auto'
+            }
+          },
+          DrawerBody: {
+            style: {
+              margin: 0,
+              height: 'auto',
+              overflow: 'show'
             }
           }
         }}

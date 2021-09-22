@@ -5,7 +5,7 @@ const primitives = {
   accent: '#ffc000',
   accent100: '#ffda00',
   accent200: '#646877',
-  accent300: '#1d2542'
+  accent300: '#38393b'
 }
 
 const overrides = {
