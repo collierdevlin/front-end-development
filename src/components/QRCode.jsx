@@ -14,7 +14,10 @@ export const QRCode = () => {
         css({
           width: '100%',
           height: 'auto',
-          maxWidth: '400px'
+          maxWidth: '400px',
+          boxShadow: '3px 3px 5px rgb(0,0,0,0.3)',
+          border: 0,
+          borderRadius: '2em'
         })
       } src={qrCode} alt="qr-code" />
       <DisplaySmall className={css({ fontWeight: 700, padding: '1em 0' })}>

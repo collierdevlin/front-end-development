@@ -49,12 +49,12 @@ export const Plugins = () => {
         </FlexGridItem>
         <FlexGridItem {...itemProps}>
           <a className={css(linkStyle)} href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">
-            <img className={css(imageStyle)} src={gatsbyLogo} alt="gatsby-logo" />
+            <img className={css({ ...imageStyle, width: '75%' })} src={gatsbyLogo} alt="gatsby-logo" />
           </a>
         </FlexGridItem>
         <FlexGridItem {...itemProps}>
           <a className={css(linkStyle)} href="https://github.com/collierdevlin/front-end-development" target="_blank" rel="noreferrer">
-            <img className={css(imageStyle)} src={githubLogo} alt="github-logo" />
+            <img className={css({ ...imageStyle, width: '65%' })} src={githubLogo} alt="github-logo" />
           </a>
         </FlexGridItem>
         <FlexGridItem {...itemProps}>
