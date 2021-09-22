@@ -2,8 +2,10 @@ import { createTheme } from 'baseui'
 
 const primitives = {
   primaryFontFamily: 'Work Sans',
-  accent: '#00adee',
-  accent100: '#0980ad',
+  accent: '#ffc000',
+  accent100: '#ffda00',
+  // accent: '#00adee',
+  // accent100: '#0980ad',
   accent200: '#646877',
   accent300: '#38393b',
 }
