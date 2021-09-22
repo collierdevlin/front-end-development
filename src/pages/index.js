@@ -111,9 +111,16 @@ const IndexPage = () => {
           onManualView={() => setCurrentIndex(index)}
         />
       ))}
-      <QRCode />
-      <Plugins />
-      <Footer />
+      <div className={
+        css({
+          background: '#9a9ca5',
+          textAlign: 'center'
+        })
+      }>
+        <QRCode />
+        <Plugins />
+        <Footer />
+      </div>
     </BaseLayout>
   )
 }
