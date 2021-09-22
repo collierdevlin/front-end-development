@@ -4,7 +4,7 @@ import { BaseProvider } from 'baseui'
 import CustomTheme from '../styles/theme'
 import '../styles/base.css'
 
-const BaseLayout = ({ children, renderControls }) => {
+const BaseLayout = ({ children, renderControls, renderMenu }) => {
   const [engine, setEngine] = React.useState(null);
 
   React.useEffect(() => {
@@ -26,6 +26,7 @@ const BaseLayout = ({ children, renderControls }) => {
         <main>
             { children }
             { renderControls() }
+            { renderMenu() }
         </main>
       </BaseProvider>
     </StyletronProvider>
