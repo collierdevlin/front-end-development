@@ -20,7 +20,15 @@ const ContentMenu = ({ sections, currentIndex, scrollToSection }) => {
         <Menu size={24} />
       </Button>
       <Drawer
-        style={{ backgroundColor: theme.colors.accent300, width: 'auto', padding: 0 }}
+        overrides={{
+          DrawerContainer: {
+            style: {
+              backgroundColor: theme.colors.accent300,
+              color: 'white'
+            }
+          }
+        }}
+        style={{ width: 'auto', padding: 0 }}
         onClose={() => setIsOpen({ ...isOpen, right: false })}
         isOpen={isOpen.right}
         anchor="right"
@@ -28,7 +36,9 @@ const ContentMenu = ({ sections, currentIndex, scrollToSection }) => {
         { sections && sections.map((section, i) => ( 
           <div>
             <Button kind={KIND.minimal} style={{ 
-              fontWeight: currentIndex === i ? 'bold' : 300
+              color: currentIndex === i ? 'white': '#ccc',
+              fontWeight: currentIndex === i ? 'bold' : 300,
+              fontStyle: currentIndex === i ? 'italic': 'normal'
              }} onClick={(e) => {
               e.preventDefault()
               scrollToSection(i)
